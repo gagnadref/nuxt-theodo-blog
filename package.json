@@ -5,6 +5,7 @@
   "author": "gagnadref <florian.gagnadre@student.ecp.fr>",
   "private": true,
   "dependencies": {
+    "moment": "^2.18.0",
     "nuxt": "latest"
   },
   "scripts": {

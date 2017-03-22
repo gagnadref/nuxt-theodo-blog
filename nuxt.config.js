@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'starter',
     meta: [
@@ -39,6 +36,9 @@ module.exports = {
       { rel: 'stylesheet', id: 'author-avatars-shortcode-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/author-avatars/css/shortcode.css?ver=1.8.7', type: 'text/css', media: 'all' }
     ]
   },
+  router: {
+    base: '/blog'
+  },
   /*
   ** Global CSS
   */
@@ -46,7 +46,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#41B883' },
   /*
   ** Build configuration
   */
@@ -63,6 +63,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: ['moment']
   }
 }
