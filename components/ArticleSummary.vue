@@ -1,44 +1,25 @@
 <template>
   <article :id="'post-' + id" :class="'post-' + id" class="post type-post status-private format-standard hentry category-hiring category-internal tag-hiringreferralgrowth">
-    <header class="entry-header">
-      <div class="entry-meta">
-        <span class="cat-links">
-          <a v-for="tag in article.tags" :href="'http://www.theodo.fr/blog/category/' + tag.slug" rel="category tag">
-            {{ tag.name }}
-          </a>
-        </span>
-      </div>
+    <ArticleHeader
+      :id="id"
+      :slug="slug"
+      :title="title"
+      :publicationDate="publicationDate"
+      :readingTime="readingTime"
+      :author="author"
+      :tags="tags"
+    >
       <h2 class="entry-title">
-        <nuxt-link :to="url">{{ article.title }}</nuxt-link>
+        <nuxt-link :to="url">{{ title }}</nuxt-link>
       </h2>
-      <div class="entry-meta">
-        <span class="entry-date">
-          <i class="pw-icon-clock"></i>
-          <nuxt-link :to="url" rel="bookmark">
-            <time class="entry-date" datetime="2012-02-13T04:34:10+00:00">{{ formattedPublicationDate }}</time>
-          </nuxt-link>
-        </span>
-        <span class="byline">
-          <span class="author vcard">
-            <i class="pw-icon-user-outline"></i>
-            <nuxt-link :to="'/author/' + article.author.slug" :title="'Posts by ' + article.author.name" class="author url fn" rel="author">
-              {{ article.author.name }}
-            </nuxt-link>
-          </span>
-        </span>
-        <span class="read-time">
-          <i class="pw-icon-bookmark-empty-1"></i>
-          <span class="eta">{{ article.readingTime }}</span> read
-        </span>
-      </div>
-    </header>
+    </ArticleHeader>
     <div class="entry-content">
-      <p>{{ article.summary }}
+      <p>{{ summary }}
         <span class="more">
-          <a class="more-link" :href="url">
+          <nuxt-link :to="url" class="more-link">
             Continue reading
             <span class="meta-nav">→</span>
-          </a>
+          </nuxt-link>
         </span>
       </p>
     </div>
@@ -46,24 +27,27 @@
 </template>
 
 <script>
-import moment from 'moment'
+import * as RouteHelper from '~/helpers/RouteHelper.js'
+
+import ArticleHeader from '~components/ArticleHeader.vue'
 
 export default {
+  components: {
+    ArticleHeader
+  },
   props: {
-    article: Object
+    id: String,
+    slug: String,
+    title: String,
+    publicationDate: String,
+    readingTime: String,
+    author: Object,
+    tags: Array,
+    summary: String
   },
   computed: {
-    formattedPublicationDate: function () {
-      return moment(this.article.publicationDate).format('D MMMM YYYY')
-    },
-    publicationMonth: function () {
-      return moment(this.article.publicationDate).format('MM')
-    },
-    publicationYear: function () {
-      return moment(this.article.publicationDate).format('YYYY')
-    },
     url: function () {
-      return '/' + this.publicationYear + '/' + this.publicationMonth + '/' + this.article.slug
+      return RouteHelper.getArticleRoute(this.publicationDate, this.slug)
     }
   }
 }

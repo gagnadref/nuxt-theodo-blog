@@ -2,9 +2,9 @@
   <header class="entry-header">
     <div class="entry-meta">
       <span class="cat-links">
-        <a v-for="tag in tags" :href="'http://www.theodo.fr/blog/category/' + tag.slug" rel="category tag">
+        <nuxt-link v-for="tag in tags" :to="{ name: 'category-category', params: { category: tag.slug }}" rel="category tag">
           {{ tag.name }}
-        </a>
+        </nuxt-link>
       </span>
     </div>
     <slot>
@@ -13,14 +13,14 @@
     <div class="entry-meta">
       <span class="entry-date">
         <i class="pw-icon-clock"></i>
-        <nuxt-link :to="url" rel="bookmark">
-          <time class="entry-date" datetime="2012-02-13T04:34:10+00:00">{{ publicationDate }}</time>
+        <nuxt-link :to="articleUrl" rel="bookmark">
+          <time class="entry-date" datetime="2012-02-13T04:34:10+00:00">{{ formattedPublicationDate }}</time>
         </nuxt-link>
       </span>
       <span class="byline">
         <span class="author vcard">
           <i class="pw-icon-user-outline"></i>
-          <nuxt-link :to="'/author/' + author.slug" :title="'Posts by ' + author.name" class="author url fn" rel="author">
+          <nuxt-link :to="authorUrl" :title="'Posts by ' + author.name" class="author url fn" rel="author">
             {{ author.name }}
           </nuxt-link>
         </span>
@@ -34,18 +34,29 @@
 </template>
 
 <script>
-import moment from 'moment'
+import * as RouteHelper from '~/helpers/RouteHelper.js'
+import * as DateHelper from '~/helpers/DateHelper.js'
 
 export default {
   props: {
-    id: String:
-    slug: String:
-    title: String:
-    publicationDate: String:
-    readingTime: String:
+    id: String,
+    slug: String,
+    title: String,
+    publicationDate: String,
+    readingTime: String,
     author: Object,
-    tags: Array,
-    url: String
+    tags: Array
   },
+  computed: {
+    articleUrl: function () {
+      return RouteHelper.getArticleRoute(this.publicationDate, this.slug)
+    },
+    authorUrl: function () {
+      return RouteHelper.getAuthorRoute(this.author.slug)
+    },
+    formattedPublicationDate: function () {
+      return DateHelper.formatDate(this.publicationDate)
+    }
+  }
 }
 </script>
