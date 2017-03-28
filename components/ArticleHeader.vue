@@ -39,7 +39,7 @@ import * as DateHelper from '~/helpers/DateHelper.js'
 
 export default {
   props: {
-    id: String,
+    id: Number,
     slug: String,
     title: String,
     publicationDate: String,

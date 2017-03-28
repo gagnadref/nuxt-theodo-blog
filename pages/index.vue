@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import ArticleSummary from '~components/ArticleSummary.vue'
 import AuthorThumbnail from '~components/AuthorThumbnail.vue'
 
@@ -53,6 +55,19 @@ export default {
   components: {
     ArticleSummary,
     AuthorThumbnail
+  },
+  fetch ({ store, params }) {
+    axios
+      .get('http://localhost:8000/authors')
+      .then((res) => {
+        store.commit('setAuthors', res.data)
+      })
+
+    return axios
+      .get('http://localhost:8000/articles')
+      .then((res) => {
+        store.commit('setArticles', res.data)
+      })
   },
   data () {
     return {

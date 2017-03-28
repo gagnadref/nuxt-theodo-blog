@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   router: {
-    base: '/blog'
+    base: '/blog/'
   },
   /*
   ** Global CSS
@@ -64,6 +64,6 @@ module.exports = {
         })
       }
     },
-    vendor: ['moment']
+    vendor: ['moment', 'axios']
   }
 }

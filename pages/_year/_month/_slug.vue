@@ -49,7 +49,7 @@ export default {
   components: {
     ArticleHeader
   },
-  data ({ params, store }) {
+  asyncData ({ params, store }) {
     return {
       article: store.state.articles.find(function (article) {
         return article.slug === params.slug

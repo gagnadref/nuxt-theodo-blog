@@ -18,7 +18,7 @@ import * as RouteHelper from '~/helpers/RouteHelper.js'
 
 export default {
   props: {
-    id: String,
+    id: Number,
     slug: String,
     picture: String
   },

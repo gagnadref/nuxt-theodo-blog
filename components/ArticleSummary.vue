@@ -36,7 +36,7 @@ export default {
     ArticleHeader
   },
   props: {
-    id: String,
+    id: Number,
     slug: String,
     title: String,
     publicationDate: String,
