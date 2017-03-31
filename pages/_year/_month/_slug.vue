@@ -3,7 +3,7 @@
     <div id="primary" class="content-area">
       <div id="content" class="site-content" role="main">
         <div class="layout-fixed">
-          <article :id="'post-' + id" :class="'post-' + id" class="post type-post status-private format-standard hentry category-hiring category-internal tag-hiringreferralgrowth">
+          <article :id="'post-' + article.id" :class="'post-' + article.id" class="post type-post status-private format-standard hentry category-hiring category-internal tag-hiringreferralgrowth">
             <ArticleHeader
               :id="article.id"
               :slug="article.slug"
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import * as RouteHelper from '~/helpers/RouteHelper.js'
 
 import ArticleHeader from '~components/ArticleHeader.vue'
@@ -49,12 +51,14 @@ export default {
   components: {
     ArticleHeader
   },
-  asyncData ({ params, store }) {
-    return {
-      article: store.state.articles.find(function (article) {
-        return article.slug === params.slug
+  async asyncData ({ params }) {
+    return axios
+      .get('http://localhost:8000/articles/' + params.year + '/' + params.month + '/' + params.slug)
+      .then((res) => {
+        return {
+          article: res.data
+        }
       })
-    }
   },
   computed: {
     authorUrl: function () {

@@ -2,7 +2,11 @@
   <header class="entry-header">
     <div class="entry-meta">
       <span class="cat-links">
-        <nuxt-link v-for="tag in tags" :to="{ name: 'category-category', params: { category: tag.slug }}" rel="category tag">
+        <nuxt-link
+            v-for="tag in tags"
+            :to="{ name: 'category-category', params: { category: tag.slug }}"
+            rel="category tag"
+            :key="tag.id">
           {{ tag.name }}
         </nuxt-link>
       </span>

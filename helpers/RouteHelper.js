@@ -19,3 +19,35 @@ export function getAuthorRoute (slug) {
     }
   }
 }
+
+export function getCategoryRoute (page, category) {
+  if (page > 1) {
+    return {
+      name: 'category-category-page-page',
+      params: {
+        page: page,
+        category: category
+      }
+    }
+  }
+
+  return {
+    name: 'category-category',
+    params: {
+      category: category
+    }
+  }
+}
+
+export function getListRoute (page, category) {
+  if (category) {
+    return getCategoryRoute(page, category)
+  }
+
+  return {
+    name: 'page-page',
+    params: {
+      page: page
+    }
+  }
+}
