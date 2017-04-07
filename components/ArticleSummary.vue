@@ -1,18 +1,20 @@
 <template>
   <article :id="'post-' + id" :class="'post-' + id" class="post type-post status-private format-standard hentry category-hiring category-internal tag-hiringreferralgrowth">
-    <ArticleHeader
-      :id="id"
-      :slug="slug"
-      :title="title"
-      :publicationDate="publicationDate"
-      :readingTime="readingTime"
-      :author="author"
-      :tags="tags"
-    >
-      <h2 class="entry-title">
-        <nuxt-link :to="url">{{ title }}</nuxt-link>
-      </h2>
-    </ArticleHeader>
+    <header class="entry-header">
+      <ArticleHeader
+        :id="id"
+        :slug="slug"
+        :title="title"
+        :publicationDate="publicationDate"
+        :readingTime="readingTime"
+        :author="author"
+        :tags="tags"
+      >
+        <h2 class="entry-title">
+          <nuxt-link :to="url">{{ title }}</nuxt-link>
+        </h2>
+      </ArticleHeader>
+    </header>
     <div class="featured-image">
       <img width="1200" :src="picture" :alt="title" title="">
     </div>

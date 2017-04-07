@@ -4,19 +4,19 @@
     :articles="$store.state.articles"
     :authors="$store.state.authors"
   >
-    <AuthorHeader :author-name="author.name" />
+    <header class="entry-header">
+      <h1 class="entry-title">Posts by <i>"{{ author.name }}"</i></h1>
+    </header>
   </Main>
 </template>
 
 <script>
 import axios from 'axios'
 
-import AuthorHeader from '~components/AuthorHeader.vue'
 import Main from '~components/Main.vue'
 
 export default {
   components: {
-    AuthorHeader,
     Main
   },
   fetch ({ store, params }) {

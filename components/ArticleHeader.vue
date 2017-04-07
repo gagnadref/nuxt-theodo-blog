@@ -1,5 +1,5 @@
 <template>
-  <header class="entry-header">
+  <div>
     <div class="entry-meta">
       <span class="cat-links">
         <nuxt-link
@@ -34,7 +34,7 @@
         <span class="eta">{{ readingTime }}</span> read
       </span>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
