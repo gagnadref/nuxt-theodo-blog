@@ -13,6 +13,9 @@
         <nuxt-link :to="url">{{ title }}</nuxt-link>
       </h2>
     </ArticleHeader>
+    <div class="featured-image">
+      <img width="1200" :src="picture" :alt="title" title="">
+    </div>
     <div class="entry-content">
       <p>{{ summary }}
         <span class="more">
@@ -41,6 +44,7 @@ export default {
     title: String,
     publicationDate: String,
     readingTime: String,
+    picture: String,
     author: Object,
     tags: Array,
     summary: String

@@ -33,7 +33,8 @@ module.exports = {
       { rel: 'stylesheet', id: 'wp-fix-css', href: 'http://www.theodo.fr/blog/wp-content/themes/readme/css/wp-fix.css', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'theme-style-css', href: 'http://www.theodo.fr/blog/wp-content/themes/theodo-blog-theme/style.css', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'author-avatars-widget-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/author-avatars/css/widget.css?ver=1.8.7', type: 'text/css', media: 'all' },
-      { rel: 'stylesheet', id: 'author-avatars-shortcode-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/author-avatars/css/shortcode.css?ver=1.8.7', type: 'text/css', media: 'all' }
+      { rel: 'stylesheet', id: 'author-avatars-shortcode-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/author-avatars/css/shortcode.css?ver=1.8.7', type: 'text/css', media: 'all' },
+      { rel: 'stylesheet', href: '/style.css', type: 'text/css', media: 'all' }
     ]
   },
   router: {
