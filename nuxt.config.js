@@ -35,6 +35,9 @@ module.exports = {
       { rel: 'stylesheet', id: 'author-avatars-widget-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/author-avatars/css/widget.css?ver=1.8.7', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'author-avatars-shortcode-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/author-avatars/css/shortcode.css?ver=1.8.7', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', href: '/style.css', type: 'text/css', media: 'all' }
+    ],
+    script: [
+      { type: 'text/javascript', src: 'sw-register.js' }
     ]
   },
   router: {
