@@ -1,3 +1,16 @@
+machine:
+  php:
+    version: 7.0.4
+
+dependencies:
+  pre:
+    - npm install
+    - cd api && composer install --no-interaction
+
 test:
+  pre:
+    - php api/bin/console server:run
+    - npm start
   override:
     - npm run lint
+    - npm test
