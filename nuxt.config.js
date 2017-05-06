@@ -1,6 +1,6 @@
 module.exports = {
   head: {
-    title: 'starter',
+    title: 'Theodo | Node, Symfony, Php, AngularJS, React, Ansible, Devops',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -14,7 +14,7 @@ module.exports = {
       { rel: 'stylesheet', id: 'mr-frontend-style-css', href: 'http://www.theodo.fr/blog/wp-content/plugins/multi-rating/assets/css/frontend-min.css?ver=4.3.1', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'font-awesome-css', href: 'http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css?ver=4.3.1', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'share-button-css-css', href: 'http://www.theodo.fr/blog/wp-content/themes/theodo-blog-theme/css/share-button.min.css', type: 'text/css', media: 'all' },
-      { rel: 'stylesheet', id: 'noticia-text-css', href: '//fonts.googleapis.com/css?family=Noticia+Text:400,400italic,700,700italic&#038;subset=latin', type: 'text/css', media: 'all' },
+      { rel: 'stylesheet', id: 'noticia-text-css', href: 'https://fonts.googleapis.com/css?family=Noticia+Text:400,400italic,700,700italic&#038;subset=latin', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'bootstrap-css', href: 'http://www.theodo.fr/blog/wp-content/themes/readme/css/bootstrap.min.css', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'fontello-css', href: 'http://www.theodo.fr/blog/wp-content/themes/readme/css/fonts/fontello/css/fontello.css', type: 'text/css', media: 'all' },
       { rel: 'stylesheet', id: 'prettify-css', href: 'http://www.theodo.fr/blog/wp-content/themes/readme/js/google-code-prettify/prettify.css', type: 'text/css', media: 'all' },
@@ -55,6 +55,24 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    loaders: [
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        loader: 'url-loader',
+        query: {
+          limit: 1000, // 1KO
+          name: 'img/[name].[hash:7].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 1000, // 1 KO
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
+      }
+    ],
     /*
     ** Run ESLINT on save
     */

@@ -2,7 +2,7 @@
   <header id="masthead" class="site-header" role="banner">
     <h2 class="site-title">
       <nuxt-link to="/" rel="home">
-        <img alt="Theodo" src="http://www.theodo.fr/uploads/blog//2015/10/logo.png">
+        <img alt="Theodo" src="~assets/img/logo.png">
       </nuxt-link>
     </h2>
     <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
