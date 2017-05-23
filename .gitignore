@@ -27,3 +27,6 @@ dist
 !api/var/SymfonyRequirements.php
 /api/vendor/
 /api/web/bundles/
+
+# MacOSX
+.DS_Store
