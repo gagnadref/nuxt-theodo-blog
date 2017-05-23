@@ -7,7 +7,8 @@
   "dependencies": {
     "axios": "^0.15.3",
     "moment": "^2.18.0",
-    "nuxt": "latest"
+    "nuxt": "latest",
+    "sw-toolbox": "^3.6.0"
   },
   "scripts": {
     "dev": "nuxt",

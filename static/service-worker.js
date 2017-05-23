@@ -1,3 +1,9 @@
+/* global importScripts, toolbox */
+importScripts('sw-toolbox.js')
+
+toolbox.router.get('/articles*', toolbox.fastest, { origin: 'http://localhost:8000' })
+toolbox.router.get('/img*', toolbox.cacheFirst)
+
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
@@ -6,11 +12,8 @@ const RUNTIME = 'runtime'
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
-  'index.html',
-  './', // Alias for index.html
-  'styles.css',
-  '../../styles/main.css',
-  'demo.js'
+  './',
+  'style.css'
 ]
 
 // The install handler takes care of precaching the resources we always need.
@@ -52,14 +55,6 @@ self.addEventListener('fetch', event => {
 
       return caches.open(RUNTIME).then(cache => {
         return fetch(event.request).then(response => {
-          if (event.request.url.includes('/articles/')) {
-            // Put a copy of the response in the runtime cache.
-            return cache.put(event.request, response.clone()).then(() => {
-              console.log('Caching response ;)', event.request.url)
-              return response
-            })
-          }
-
           return response
         })
       })
