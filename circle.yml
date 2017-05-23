@@ -8,7 +8,8 @@ dependencies:
 
 test:
   pre:
-    - php api/bin/console server:run
+    - php api/bin/console server:start
+    - npm build
     - npm start
   override:
     - npm run lint
